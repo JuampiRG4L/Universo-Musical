@@ -1,0 +1,73 @@
+{% extends "core/base.html" %}
+
+
+{% block title %}
+
+{{ artist.stage_name }} | {{ site.site_name }}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<div id="top"></div>
+
+
+
+{% include "includes/artist/hero.html" %}
+
+
+
+{% include "includes/artist/albums.html" %}
+
+
+
+
+<section id="gallery">
+
+
+<h2>
+
+Galería
+
+</h2>
+
+
+</section>
+
+
+
+
+<section id="news">
+
+
+<h2>
+
+Noticias
+
+</h2>
+
+
+</section>
+
+
+
+
+<section id="awards">
+
+
+<h2>
+
+Premios
+
+</h2>
+
+
+</section>
+
+
+
+{% endblock %}

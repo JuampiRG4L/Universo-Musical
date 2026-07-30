@@ -1,0 +1,135 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+
+<head>
+
+
+<meta charset="UTF-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+
+<title>
+
+{% block title %}
+
+{{ site_settings.site_name }}
+
+{% endblock %}
+
+</title>
+
+
+<meta
+    name="description"
+    content="{% block meta_description %}{{ site_settings.description }}{% endblock %}"
+>
+
+<meta
+    name="keywords"
+    content="{% block meta_keywords %}artistas, música, álbumes, canciones{% endblock %}"
+>
+
+<meta
+    property="og:title"
+    content="{% block og_title %}{{ site_settings.site_name }}{% endblock %}"
+>
+
+<meta
+    property="og:description"
+    content="{% block og_description %}{{ site_settings.description }}{% endblock %}"
+>
+
+
+
+
+
+{% if page_favicon %}
+<link rel="icon" href="{{ page_favicon.url }}" type="image/x-icon">
+{% elif site_settings and site_settings.favicon %}
+<link rel="icon" href="{{ site_settings.favicon.url }}" type="image/x-icon">
+{% endif %}
+
+
+
+
+<link
+
+rel="stylesheet"
+
+href="{% static 'css/style.css' %}"
+
+>
+
+
+
+{% block extra_css %}
+
+{% endblock %}
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+{% if artist %}
+
+
+    {% include "includes/navbar_artist.html" %}
+
+
+
+{% else %}
+
+
+
+    {% include "includes/navbar_home.html" %}
+
+
+
+{% endif %}
+
+
+
+<main>
+
+
+{% block content %}
+
+
+{% endblock %}
+
+
+</main>
+
+
+
+{% include "includes/footer.html" %}
+
+
+
+{% block extra_js %}
+
+{% endblock %}
+
+
+
+</body>
+
+
+</html>

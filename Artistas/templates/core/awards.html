@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+
+
+{% load i18n %}
+
+
+
+
+{% block title %}
+
+Premios | {{ artist.stage_name }}
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+
+<section class="artist-awards">
+
+
+<h1>
+
+{% translate "Premios" %}
+
+</h1>
+
+
+
+{% include "includes/awards/awards_list.html" %}
+
+
+
+</section>
+
+
+
+{% endblock %}

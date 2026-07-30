@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+
+{{ album.title }}
+
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/album/album_hero.html" %}
+
+{% include "includes/album/songs.html" %}
+
+{% endblock %}

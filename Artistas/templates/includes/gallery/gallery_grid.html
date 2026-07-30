@@ -1,0 +1,29 @@
+{% load i18n %}
+
+
+<div class="gallery-grid">
+
+
+{% for image in gallery %}
+
+
+    {% include "includes/cards/gallery_card.html" %}
+
+
+
+{% empty %}
+
+
+<p>
+
+{% translate "No hay imágenes disponibles." %}
+
+</p>
+
+
+
+{% endfor %}
+
+
+
+</div>

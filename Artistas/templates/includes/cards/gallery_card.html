@@ -1,0 +1,37 @@
+<article class="gallery-card">
+
+
+{% if image.image %}
+
+<img
+
+src="{{ image.image.url }}"
+
+alt="{{ image.title }}"
+
+>
+
+{% endif %}
+
+
+
+<h3>
+
+{{ image.title }}
+
+</h3>
+
+
+{% if image.description %}
+
+<p>
+
+{{ image.description }}
+
+</p>
+
+{% endif %}
+
+
+
+</article>

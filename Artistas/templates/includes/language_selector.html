@@ -1,0 +1,40 @@
+<form action="{% url 'set_language' %}" method="post">
+
+{% csrf_token %}
+
+
+<select name="language">
+
+
+<option value="es">
+
+🇨🇴 Español
+
+</option>
+
+
+<option value="en">
+
+🇺🇸 English
+
+</option>
+
+
+<option value="pt">
+
+🇧🇷 Português
+
+</option>
+
+
+</select>
+
+
+<button type="submit">
+
+OK
+
+</button>
+
+
+</form>

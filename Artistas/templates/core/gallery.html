@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+
+
+{% load i18n %}
+
+
+
+{% block title %}
+
+Galería | {{ artist.stage_name }}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<section class="artist-gallery">
+
+
+<h1>
+
+{% translate "Galería" %}
+
+</h1>
+
+
+
+{% include "includes/gallery/gallery_grid.html" %}
+
+
+
+</section>
+
+
+{% endblock %}

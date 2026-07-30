@@ -1,0 +1,38 @@
+<section class="album-hero">
+
+    <div>
+
+        {% if album.cover %}
+
+            <img
+                src="{{ album.cover.url }}"
+                alt="{{ album.title }}"
+            >
+
+        {% endif %}
+
+    </div>
+
+    <div>
+
+        <h1>
+
+            {{ album.title }}
+
+        </h1>
+
+        <p>
+
+            {{ album.formatted_release_date }}
+
+        </p>
+
+        <p>
+
+            {{ album.description }}
+
+        </p>
+
+    </div>
+
+</section>

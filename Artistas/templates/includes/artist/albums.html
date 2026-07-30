@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<section id="albums">
+
+    <h2>
+
+        {% translate "Álbumes" %}
+
+    </h2>
+
+    <div class="albums-grid">
+
+        {% for album in albums %}
+
+            {% include "includes/cards/album_card.html" %}
+
+        {% empty %}
+
+            <p>
+
+                {% translate "Este artista aún no tiene álbumes registrados." %}
+
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>

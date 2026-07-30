@@ -1,0 +1,78 @@
+{% load i18n %}
+
+
+<header>
+
+    <nav>
+
+
+        <div class="navbar-brand">
+
+
+            {% if site.logo %}
+
+                <img
+
+                src="{{ site.logo.url }}"
+
+                alt="{{ site.site_name }}"
+
+                >
+
+            {% endif %}
+
+
+
+            <span>
+
+                {{ site.site_name }}
+
+            </span>
+
+
+        </div>
+
+
+
+        <ul>
+
+
+            <li>
+
+                <a href="{% url 'home' %}">
+
+                    {% translate "Inicio" %}
+
+                </a>
+
+            </li>
+
+
+
+            <li>
+
+                <a href="{% url 'home' %}#artists">
+
+                    {% translate "Artistas" %}
+
+                </a>
+
+            </li>
+
+
+
+            <li>
+
+                {% include "includes/language_selector.html" %}
+
+            </li>
+
+
+        </ul>
+
+
+
+    </nav>
+
+
+</header>

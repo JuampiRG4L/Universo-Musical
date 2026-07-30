@@ -1,0 +1,37 @@
+{% load i18n %}
+
+{% if social_links %}
+
+<section>
+
+    <h3>
+
+        {% translate "Redes sociales" %}
+
+    </h3>
+
+    <ul>
+
+        {% for social in social_links %}
+
+            <li>
+
+                <a
+                    href="{{ social.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    {{ social.get_social_network_display }}
+
+                </a>
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</section>
+
+{% endif %}

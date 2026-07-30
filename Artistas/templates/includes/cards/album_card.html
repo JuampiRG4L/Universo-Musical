@@ -1,0 +1,30 @@
+{% load i18n %}
+
+<article class="album-card">
+
+    {% if album.cover %}
+        <img
+            src="{{ album.cover.url }}"
+            alt="{{ album.title }}"
+        >
+    {% endif %}
+
+    <h3>
+
+        {{ album.title }}
+
+    </h3>
+
+    <p>
+
+        {{ album.formatted_release_date }}
+
+    </p>
+
+    <a href="{% url 'album_detail' album.slug %}">
+
+        {% translate "Ver más" %}
+
+    </a>
+
+</article>

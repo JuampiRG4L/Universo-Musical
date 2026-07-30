@@ -1,0 +1,33 @@
+{% load i18n %}
+
+
+
+<div class="awards-list">
+
+
+
+{% for award in awards %}
+
+
+
+    {% include "includes/cards/award_card.html" %}
+
+
+
+{% empty %}
+
+
+
+<p>
+
+{% translate "No hay premios registrados." %}
+
+</p>
+
+
+
+{% endfor %}
+
+
+
+</div>

@@ -1,0 +1,24 @@
+<section id="top" class="artist-hero">
+
+    <div class="artist-image">
+
+        {% if artist.profile_image %}
+
+            <img
+                src="{{ artist.profile_image.url }}"
+                alt="{{ artist.stage_name }}"
+            >
+
+        {% endif %}
+
+    </div>
+
+    <div class="artist-content">
+
+        {% include "includes/artist/artist_info.html" %}
+
+        {% include "includes/artist/social_links.html" %}
+
+    </div>
+
+</section>

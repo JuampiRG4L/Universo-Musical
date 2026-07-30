@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="artist-info">
+
+    <h1>{{ artist.stage_name }}</h1>
+
+    <h2>{{ artist.full_name }}</h2>
+
+    <p>
+
+        {{ artist.country.flag_emoji }}
+
+        {{ artist.country.name }}
+
+    </p>
+
+    {% if artist.birth_date %}
+
+        <p>
+
+            <strong>{% translate "Fecha de nacimiento" %}:</strong>
+
+            {{ artist.formatted_birth_date }}
+
+        </p>
+
+    {% endif %}
+
+    <p>
+
+        {{ artist.short_biography }}
+
+    </p>
+
+    <div>
+
+        {{ artist.biography|linebreaks }}
+
+    </div>
+
+</div>

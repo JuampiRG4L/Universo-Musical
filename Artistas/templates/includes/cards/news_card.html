@@ -1,0 +1,57 @@
+<article class="news-card">
+
+
+<div>
+
+
+{% if item.image %}
+
+<img
+
+src="{{ item.image.url }}"
+
+alt="{{ item.title }}"
+
+>
+
+{% endif %}
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<h2>
+
+{{ item.title }}
+
+</h2>
+
+
+
+<p>
+
+{{ item.formatted_publication_date }}
+
+</p>
+
+
+
+<p>
+
+{{ item.description }}
+
+</p>
+
+
+
+</div>
+
+
+
+</article>

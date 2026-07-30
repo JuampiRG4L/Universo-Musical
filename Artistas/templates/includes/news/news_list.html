@@ -1,0 +1,30 @@
+{% load i18n %}
+
+
+<div class="news-list">
+
+
+
+{% for item in news %}
+
+
+
+    {% include "includes/cards/news_card.html" %}
+
+
+
+{% empty %}
+
+
+<p>
+
+{% translate "No hay noticias disponibles." %}
+
+</p>
+
+
+{% endfor %}
+
+
+
+</div>

@@ -1,0 +1,56 @@
+{% load i18n %}
+
+
+<article class="artist-card">
+
+
+    {% if artist.profile_image %}
+
+        <img
+
+        src="{{ artist.profile_image.url }}"
+
+        alt="{{ artist.stage_name }}"
+
+        loading="lazy"
+
+        >
+
+    {% endif %}
+
+
+
+    {% if artist.country and artist.country.flag%}
+
+
+        <img
+
+        src="{{ artist.country.flag.url }}"
+
+        alt="{{ artist.country.name }}"
+
+        loading="lazy"
+
+        >
+
+
+    {% endif %}
+
+
+
+    <h3>
+
+        {{ artist.stage_name }}
+
+    </h3>
+
+
+
+    <a href="{% url 'artist_detail' artist.slug %}">
+
+        {% translate "Ver más" %}
+
+    </a>
+
+
+</article>

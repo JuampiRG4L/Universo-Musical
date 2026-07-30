@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<section>
+
+<h2>
+
+{% translate "Canciones" %}
+
+</h2>
+
+<div>
+
+{% for song in songs %}
+
+    {% include "includes/cards/song_card.html" %}
+
+{% empty %}
+
+<p>
+
+{% translate "Este álbum aún no tiene canciones." %}
+
+</p>
+
+{% endfor %}
+
+</div>
+
+</section>

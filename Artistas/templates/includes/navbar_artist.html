@@ -1,0 +1,62 @@
+{% load i18n %}
+
+<header>
+
+<nav>
+
+    <div class="navbar-brand">
+{% if artist.favicon %}
+<img
+src="{{ artist.favicon.url }}"
+alt="{{ artist.stage_name }}"
+>
+{% endif %}
+<span>
+{{ artist.stage_name }}
+</span>
+</div>
+
+    <a href="#top">
+
+        {% translate "Inicio" %}
+
+    </a>
+
+    <a href="{% url 'home' %}#artists">
+
+        {% translate "Artistas" %}
+
+    </a>
+
+    {% if current_section != "gallery" %}
+
+        <a href="{% url 'artist_gallery' artist.slug %}">
+
+            {% translate "Galería" %}
+
+        </a>
+
+    {% endif %}
+
+    {% if current_section != "news" %}
+
+        <a href="{% url 'artist_news' artist.slug %}">
+
+            {% translate "Noticias" %}
+
+        </a>
+
+    {% endif %}
+
+    {% if current_section != "awards" %}
+
+        <a href="{% url 'artist_awards' artist.slug %}">
+
+            {% translate "Premios" %}
+
+        </a>
+
+    {% endif %}
+
+</nav>
+</header>

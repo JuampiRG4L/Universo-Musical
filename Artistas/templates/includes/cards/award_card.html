@@ -1,0 +1,56 @@
+<article class="award-card">
+
+
+<div>
+
+
+{% if award.image %}
+
+
+<img
+
+src="{{ award.image.url }}"
+
+alt="{{ award.name }}"
+
+>
+
+
+{% endif %}
+
+
+</div>
+
+
+
+<div>
+
+
+<h2>
+
+{{ award.name }}
+
+</h2>
+
+
+
+<p>
+
+{{ award.formatted_award_date }}
+
+</p>
+
+
+
+<p>
+
+{{ award.description }}
+
+</p>
+
+
+</div>
+
+
+
+</article>

@@ -1,0 +1,29 @@
+<div class="artist-card">
+
+    <img
+        src="{{ artist.profile_image.url }}"
+        alt="{{ artist.stage_name }}"
+    >
+
+    <div class="artist-country">
+
+        <img
+            src="{{ artist.country.flag.url }}"
+            alt="{{ artist.country.name }}"
+        >
+
+    </div>
+
+    <h3>
+
+        {{ artist.stage_name }}
+
+    </h3>
+
+    <a href="{% url 'artist_detail' artist.slug %}">
+
+        Ver más
+
+    </a>
+
+</div>
