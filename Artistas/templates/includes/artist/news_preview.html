@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<section id="news">
+
+    <h2>
+        {% translate "Noticias" %}
+    </h2>
+
+    <div class="news-list">
+
+        {% for item in news|slice:":3" %}
+
+            {% include "includes/cards/news_card.html" %}
+
+        {% empty %}
+
+            <p>
+                {% translate "Este artista aún no tiene noticias publicadas." %}
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+    {% if news %}
+        <a href="{% url 'artist_news' artist.slug %}">
+            {% translate "Ver todas las noticias" %}
+        </a>
+    {% endif %}
+
+</section>

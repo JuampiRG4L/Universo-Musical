@@ -1,13 +1,13 @@
 <footer>
 
 
-{% if site.logo %}
+{% if site_settings.logo %}
 
 <img
 
-src="{{ site.logo.url }}"
+src="{{ site_settings.logo.url }}"
 
-alt="{{ site.site_name }}"
+alt="{{ site_settings.site_name }}"
 
 >
 
@@ -17,16 +17,7 @@ alt="{{ site.site_name }}"
 
 <p>
 
-© Todos los derechos reservados
-
-</p>
-
-
-<p>
-
-{{ site.site_name }}
-
-2026
+&copy; {{ site_settings.site_name }} &mdash; {{ site_settings.footer_text }} {% now "Y" %}
 
 </p>
 

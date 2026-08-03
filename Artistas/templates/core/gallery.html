@@ -1,5 +1,7 @@
 {% extends "core/base.html" %}
 
+{% load static %}
+
 
 {% load i18n %}
 
@@ -12,6 +14,11 @@ Galería | {{ artist.stage_name }}
 {% endblock %}
 
 
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/gallery.css' %}">
+{% endblock %}
 
 
 {% block content %}

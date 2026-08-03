@@ -1,5 +1,7 @@
 {% extends "core/base.html" %}
 
+{% load static %}
+
 
 {% load i18n %}
 
@@ -14,6 +16,11 @@ Premios | {{ artist.stage_name }}
 
 
 
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/awards.css' %}">
+{% endblock %}
 
 
 {% block content %}

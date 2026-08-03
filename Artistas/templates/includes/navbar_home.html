@@ -9,13 +9,13 @@
         <div class="navbar-brand">
 
 
-            {% if site.logo %}
+            {% if site_settings.logo %}
 
                 <img
 
-                src="{{ site.logo.url }}"
+                src="{{ site_settings.logo.url }}"
 
-                alt="{{ site.site_name }}"
+                alt="{{ site_settings.site_name }}"
 
                 >
 
@@ -25,7 +25,7 @@
 
             <span>
 
-                {{ site.site_name }}
+                {{ site_settings.site_name }}
 
             </span>
 

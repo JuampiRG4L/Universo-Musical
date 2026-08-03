@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<section id="gallery">
+
+    <h2>
+        {% translate "Galería" %}
+    </h2>
+
+    <div class="gallery-grid">
+
+        {% for image in gallery|slice:":4" %}
+
+            {% include "includes/cards/gallery_card.html" %}
+
+        {% empty %}
+
+            <p>
+                {% translate "Este artista aún no tiene imágenes en la galería." %}
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+    {% if gallery %}
+        <a href="{% url 'artist_gallery' artist.slug %}">
+            {% translate "Ver galería completa" %}
+        </a>
+    {% endif %}
+
+</section>

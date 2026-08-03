@@ -1,10 +1,17 @@
 {% extends "core/base.html" %}
 
+{% load static %}
+
 {% block title %}
 
 {{ album.title }}
 
 {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/album.css' %}">
+{% endblock %}
+
 
 {% block content %}
 

@@ -1,13 +1,20 @@
 {% extends "core/base.html" %}
 
+{% load static %}
+
 
 {% block title %}
 
-{{ artist.stage_name }} | {{ site.site_name }}
+{{ artist.stage_name }} | {{ site_settings.site_name }}
 
 {% endblock %}
 
 
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/artist.css' %}">
+{% endblock %}
 
 
 {% block content %}
@@ -26,47 +33,15 @@
 
 
 
-<section id="gallery">
-
-
-<h2>
-
-Galería
-
-</h2>
-
-
-</section>
+{% include "includes/artist/gallery_preview.html" %}
 
 
 
-
-<section id="news">
-
-
-<h2>
-
-Noticias
-
-</h2>
-
-
-</section>
+{% include "includes/artist/news_preview.html" %}
 
 
 
-
-<section id="awards">
-
-
-<h2>
-
-Premios
-
-</h2>
-
-
-</section>
+{% include "includes/artist/awards_preview.html" %}
 
 
 
