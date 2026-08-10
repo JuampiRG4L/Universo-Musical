@@ -28,6 +28,16 @@ alt="{{ artist.stage_name }}"
 
     </a>
 
+    {% if current_section != "albums" %}
+
+        <a href="{% url 'artist_albums' artist.slug %}">
+
+            {% translate "Álbumes" %}
+
+        </a>
+
+    {% endif %}
+
     {% if current_section != "gallery" %}
 
         <a href="{% url 'artist_gallery' artist.slug %}">

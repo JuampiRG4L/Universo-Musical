@@ -1,5 +1,7 @@
 <article class="news-card">
 
+{% load i18n %}
+
 
 <div>
 
@@ -36,6 +38,7 @@ alt="{{ item.title }}"
 
 <p>
 
+<strong>{% translate "Publicado el" %}:</strong>
 {{ item.formatted_publication_date }}
 
 </p>

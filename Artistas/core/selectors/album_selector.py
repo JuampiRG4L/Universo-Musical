@@ -20,3 +20,18 @@ def get_album(slug):
         slug=slug
 
     )
+
+
+def get_artist_albums(artist):
+
+    return (
+
+        artist.albums
+
+        .all()
+
+        .order_by(
+            "-release_date"
+        )
+
+    )

@@ -17,14 +17,19 @@
 
     <p>
 
+        <strong>{% translate "Fecha de lanzamiento" %}:</strong>
         {{ album.formatted_release_date }}
 
     </p>
 
-    <a href="{% url 'album_detail' album.slug %}">
+    <button
+        type="button"
+        class="btn-ver-mas"
+        data-href="{% url 'album_detail' album.slug %}"
+    >
 
         {% translate "Ver más" %}
 
-    </a>
+    </button>
 
 </article>

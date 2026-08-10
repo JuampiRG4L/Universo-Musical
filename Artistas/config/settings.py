@@ -98,6 +98,19 @@ LANGUAGES = [
     ("pt", "Português"),
 ]
 
+# Bandera que se muestra junto a cada idioma en el selector de idioma
+# (includes/language_selector.html). El idioma en sí (código ISO 639-1,
+# ej. "es") no trae implícito un país/bandera, así que este mapeo es la
+# única pieza que hay que tocar al agregar un idioma nuevo: agrega aquí
+# la entrada "código_idioma": "código_país" (ISO 3166 alpha-2, ej. "CO").
+# Si un idioma nuevo no está en este diccionario, el selector simplemente
+# no le muestra bandera (no se rompe nada).
+LANGUAGE_COUNTRY_FLAGS = {
+    "es": "CO",
+    "en": "US",
+    "pt": "BR",
+}
+
 TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True

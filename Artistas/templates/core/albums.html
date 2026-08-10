@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+
+{% load i18n %}
+
+
+{% block title %}
+
+{% translate "Álbumes" %} | {{ artist.stage_name }}
+
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/artist_albums.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="artist-albums">
+
+
+<h1>
+
+{% translate "Álbumes" %}
+
+</h1>
+
+
+{% include "includes/album/albums_list.html" %}
+
+
+</section>
+
+
+{% endblock %}

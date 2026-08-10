@@ -59,10 +59,6 @@ def get_artist(slug):
 
         .prefetch_related(
             "social_links",
-            "albums",
-            "gallery",
-            "news",
-            "awards",
         ),
 
         slug=slug

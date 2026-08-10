@@ -1,5 +1,7 @@
 <article class="award-card">
 
+{% load i18n %}
+
 
 <div>
 
@@ -36,6 +38,7 @@ alt="{{ award.name }}"
 
 <p>
 
+<strong>{% translate "Fecha del premio" %}:</strong>
 {{ award.formatted_award_date }}
 
 </p>

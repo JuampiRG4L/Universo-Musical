@@ -1,4 +1,4 @@
-from core.selectors.album_selector import get_album
+from core.selectors.album_selector import get_album, get_artist_albums
 
 
 def get_album_context(slug):
@@ -12,5 +12,16 @@ def get_album_context(slug):
         "album": album,
 
         "songs": album.songs.all(),
+
+    }
+
+
+def get_artist_albums_context(artist):
+
+    return {
+
+        "artist": artist,
+
+        "albums": get_artist_albums(artist),
 
     }

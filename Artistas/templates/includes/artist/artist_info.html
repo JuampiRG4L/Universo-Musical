@@ -6,11 +6,23 @@
 
     <h2>{{ artist.full_name }}</h2>
 
-    <p>
+    <p class="artist-country">
 
-        {{ artist.country.flag_emoji }}
+        {% if artist.country %}
 
-        {{ artist.country.name }}
+            {% if artist.country.flag %}
+                <img
+                    src="{{ artist.country.flag.url }}"
+                    alt="{{ artist.country.name }}"
+                    class="country-flag"
+                >
+            {% else %}
+                <span class="country-flag">{{ artist.country.flag_emoji }}</span>
+            {% endif %}
+
+            <span>{{ artist.country.name }}</span>
+
+        {% endif %}
 
     </p>
 

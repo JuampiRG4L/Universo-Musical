@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views.home import home
 from .views.artist import artist_detail
-from .views.album import album_detail
+from .views.album import album_detail, artist_albums
 from .views.gallery import gallery
 from .views.news import news_list
 from .views.award import awards
@@ -22,6 +22,13 @@ urlpatterns = [
         "artista/<slug:slug>/",
         artist_detail,
         name="artist_detail"
+    ),
+
+
+    path(
+        "artista/<slug:slug>/albumes/",
+        artist_albums,
+        name="artist_albums"
     ),
 
 

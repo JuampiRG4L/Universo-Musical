@@ -1,40 +1,32 @@
+{% load i18n %}
+{% load language_extras %}
+
 <form action="{% url 'set_language' %}" method="post">
 
 {% csrf_token %}
 
+<input type="hidden" name="next" value="{{ request.path }}">
 
 <select name="language">
 
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
 
-<option value="es">
+{% for code, name in AVAILABLE_LANGUAGES %}
 
-🇨🇴 Español
+    <option
+        value="{{ code }}"
+        {% if code == CURRENT_LANGUAGE %}selected{% endif %}
+    >
+        {% language_flag code %} {% language_code_label code %}
+    </option>
 
-</option>
-
-
-<option value="en">
-
-🇺🇸 English
-
-</option>
-
-
-<option value="pt">
-
-🇧🇷 Português
-
-</option>
-
+{% endfor %}
 
 </select>
 
-
 <button type="submit">
-
-OK
-
+    OK
 </button>
-
 
 </form>

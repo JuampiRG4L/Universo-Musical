@@ -108,7 +108,7 @@ class PageViewsTests(BaseTestData):
         response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
 
-    def test_artist_detail_loads_and_shows_related_data(self):
+    def test_artist_detail_shows_info_but_not_related_sections(self):
         response = self.client.get(
             reverse("artist_detail", kwargs={"slug": self.artist.slug})
         )
@@ -116,9 +116,21 @@ class PageViewsTests(BaseTestData):
 
         content = response.content.decode()
         self.assertIn(self.site_settings.site_name, content)
-        self.assertIn(self.gallery_image.title, content)
-        self.assertIn(self.news.title, content)
-        self.assertIn(self.award.name, content)
+        self.assertIn(self.artist.stage_name, content)
+
+        # Álbumes, galería, noticias y premios ya NO se muestran en la
+        # página de artista: viven en sus propias páginas (ver navbar_artist.html)
+        self.assertNotIn(self.album.title, content)
+        self.assertNotIn(self.gallery_image.title, content)
+        self.assertNotIn(self.news.title, content)
+        self.assertNotIn(self.award.name, content)
+
+    def test_artist_albums_page_shows_albums(self):
+        response = self.client.get(
+            reverse("artist_albums", kwargs={"slug": self.artist.slug})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.album.title)
 
     def test_album_detail_loads(self):
         response = self.client.get(
@@ -126,23 +138,34 @@ class PageViewsTests(BaseTestData):
         )
         self.assertEqual(response.status_code, 200)
 
-    def test_artist_gallery_loads(self):
+    def test_artist_gallery_loads_and_shows_gallery(self):
         response = self.client.get(
             reverse("artist_gallery", kwargs={"slug": self.artist.slug})
         )
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.gallery_image.title)
 
-    def test_artist_news_loads(self):
+    def test_artist_news_loads_and_shows_news(self):
         response = self.client.get(
             reverse("artist_news", kwargs={"slug": self.artist.slug})
         )
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.news.title)
 
-    def test_artist_awards_loads(self):
+    def test_artist_awards_loads_and_shows_awards(self):
         response = self.client.get(
             reverse("artist_awards", kwargs={"slug": self.artist.slug})
         )
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.award.name)
+
+    def test_navbar_hides_link_to_current_section(self):
+        response = self.client.get(
+            reverse("artist_gallery", kwargs={"slug": self.artist.slug})
+        )
+        content = response.content.decode()
+        gallery_url = reverse("artist_gallery", kwargs={"slug": self.artist.slug})
+        self.assertNotIn(f'href="{gallery_url}"', content)
 
     def test_unpublished_news_is_not_shown(self):
         News.objects.create(
@@ -282,3 +305,68 @@ class SEOTests(BaseTestData):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Sitemap:")
         self.assertContains(response, "Disallow: /admin/")
+
+
+class FrontendStructureTests(BaseTestData):
+    """
+    Prueba los cambios de estructura de front-end: "Ver más" como
+    <button> (no <a>) en las cards, y el selector de idioma con
+    bandera + código.
+    """
+
+    def test_artist_card_ver_mas_is_a_button(self):
+        response = self.client.get(reverse("search"), {"q": "Prueba"})
+        content = response.content.decode()
+        self.assertIn('class="btn-ver-mas"', content)
+        self.assertIn(
+            f'data-href="{self.artist.get_absolute_url()}"',
+            content,
+        )
+        self.assertNotIn("onclick=", content)
+
+    def test_album_card_ver_mas_is_a_button(self):
+        response = self.client.get(
+            reverse("artist_albums", kwargs={"slug": self.artist.slug})
+        )
+        content = response.content.decode()
+        self.assertIn('class="btn-ver-mas"', content)
+        self.assertIn(
+            f'data-href="{self.album.get_absolute_url()}"',
+            content,
+        )
+        self.assertNotIn("onclick=", content)
+
+    def test_no_inline_javascript_anywhere(self):
+        urls_to_check = [
+            reverse("home"),
+            reverse("artist_detail", kwargs={"slug": self.artist.slug}),
+            reverse("artist_albums", kwargs={"slug": self.artist.slug}),
+            reverse("album_detail", kwargs={"slug": self.album.slug}),
+            reverse("artist_gallery", kwargs={"slug": self.artist.slug}),
+            reverse("artist_news", kwargs={"slug": self.artist.slug}),
+            reverse("artist_awards", kwargs={"slug": self.artist.slug}),
+            reverse("search"),
+        ]
+
+        for url in urls_to_check:
+            response = self.client.get(url)
+            content = response.content.decode()
+            self.assertNotIn(
+                "onclick=", content,
+                f"{url} tiene JS inline (onclick)",
+            )
+
+        # El único <script> permitido es el punto de entrada global
+        home_content = self.client.get(reverse("home")).content.decode()
+        self.assertIn('src="/static/js/main.js"', home_content)
+        response = self.client.get(reverse("home"))
+        content = response.content.decode()
+
+        from django.conf import settings
+
+        for code, _name in settings.LANGUAGES:
+            self.assertIn(f'value="{code}"', content)
+            expected_label = settings.LANGUAGE_COUNTRY_FLAGS.get(
+                code, code.upper()
+            )
+            self.assertIn(expected_label, content)

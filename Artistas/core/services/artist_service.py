@@ -11,16 +11,6 @@ def get_artist_context(slug):
 
         "page_favicon": artist.favicon,
 
-        "albums": artist.albums.all(),
-
-        "gallery": artist.gallery.all(),
-
-        "news": artist.news.filter(
-            is_published=True
-        ),
-
-        "awards": artist.awards.all(),
-
         "social_links": artist.social_links.all(),
 
     }
