@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+
+{% load i18n %}
+
+
+{% block title %}
+
+{% translate "Resultados de búsqueda" %} | {{ site_settings.site_name }}
+
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/search.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<section id="search-results">
+
+
+{% include "includes/home/search_bar.html" %}
+
+
+{% if query %}
+
+    <h1>
+        {% blocktranslate %}Resultados para "{{ query }}"{% endblocktranslate %}
+    </h1>
+
+{% else %}
+
+    <h1>
+        {% translate "Buscar artistas" %}
+    </h1>
+
+{% endif %}
+
+
+<div class="artists-grid">
+
+
+{% for artist in artists %}
+
+
+    {% include "includes/cards/artist_card.html" %}
+
+
+{% empty %}
+
+
+{% if query %}
+
+    <p>
+        {% translate "No se encontraron artistas con ese nombre." %}
+    </p>
+
+{% endif %}
+
+
+{% endfor %}
+
+
+</div>
+
+
+</section>
+
+
+{% endblock %}

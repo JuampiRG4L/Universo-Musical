@@ -50,6 +50,15 @@
     content="{% block og_description %}{{ site_settings.description }}{% endblock %}"
 >
 
+{% block og_image %}
+{% if site_settings and site_settings.logo %}
+<meta
+    property="og:image"
+    content="{{ request.scheme }}://{{ request.get_host }}{{ site_settings.logo.url }}"
+>
+{% endif %}
+{% endblock %}
+
 
 
 

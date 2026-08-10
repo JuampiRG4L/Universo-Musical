@@ -22,6 +22,31 @@ def get_home_artists():
 
 
 
+def search_artists(query):
+
+    if not query:
+        return Artist.objects.none()
+
+    return (
+
+        Artist.objects
+
+        .select_related(
+            "country"
+        )
+
+        .filter(
+            stage_name__icontains=query
+        )
+
+        .order_by(
+            "stage_name"
+        )
+
+    )
+
+
+
 def get_artist(slug):
 
     return get_object_or_404(

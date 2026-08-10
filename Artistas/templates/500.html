@@ -1,0 +1,26 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% translate "Error del servidor" %}</title>
+</head>
+<body>
+
+    <section id="server-error">
+
+        <h1>500</h1>
+
+        <p>
+            {% translate "Ocurrió un error inesperado. Ya estamos al tanto e intentaremos solucionarlo." %}
+        </p>
+
+        <a href="/">
+            {% translate "Volver al inicio" %}
+        </a>
+
+    </section>
+
+</body>
+</html>

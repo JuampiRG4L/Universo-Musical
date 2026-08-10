@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+
+{% load i18n %}
+
+
+{% block title %}
+
+{% translate "Página no encontrada" %} | {{ site_settings.site_name }}
+
+{% endblock %}
+
+
+{% block content %}
+
+<section id="not-found">
+
+    <h1>404</h1>
+
+    <p>
+        {% translate "La página que buscas no existe o fue movida." %}
+    </p>
+
+    <a href="{% url 'home' %}">
+        {% translate "Volver al inicio" %}
+    </a>
+
+</section>
+
+{% endblock %}

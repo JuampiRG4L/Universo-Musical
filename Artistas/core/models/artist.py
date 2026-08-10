@@ -78,3 +78,12 @@ class Artist(BaseModel, SlugModel):
     def __str__(self):
 
         return self.stage_name
+
+    def get_absolute_url(self):
+
+        from django.urls import reverse
+
+        return reverse(
+            "artist_detail",
+            kwargs={"slug": self.slug}
+        )

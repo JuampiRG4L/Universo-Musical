@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'core',
 ]
 
@@ -136,3 +137,51 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
+
+# --- Logging ---
+# En consola siempre (útil en desarrollo y para hosts que capturan stdout,
+# como Railway/Render/Heroku). Los errores (nivel ERROR+, ej. excepciones 500)
+# quedan además en un archivo de log cuando DEBUG=False.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{asctime} [{levelname}] {name}: {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
+
+if not DEBUG:
+    LOGGING['handlers']['file'] = {
+        'class': 'logging.FileHandler',
+        'filename': BASE_DIR / 'error.log',
+        'formatter': 'verbose',
+        'level': 'ERROR',
+    }
+    LOGGING['root']['handlers'].append('file')
+    LOGGING['loggers']['django']['handlers'].append('file')
+    LOGGING['loggers']['django.request']['handlers'].append('file')

@@ -1,0 +1,21 @@
+{% load i18n %}
+
+<form action="{% url 'search' %}" method="get" id="search-bar">
+
+    <label for="search-input">
+        {% translate "Buscar artista" %}
+    </label>
+
+    <input
+        type="text"
+        name="q"
+        id="search-input"
+        value="{{ query|default:'' }}"
+        placeholder="{% translate 'Buscar artista...' %}"
+    >
+
+    <button type="submit">
+        {% translate "Buscar" %}
+    </button>
+
+</form>

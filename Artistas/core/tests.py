@@ -183,3 +183,102 @@ class SiteSettingsCacheTests(BaseTestData):
 
         response = self.client.get(reverse("home"))
         self.assertContains(response, "Nombre Actualizado")
+
+
+class SearchTests(BaseTestData):
+    """
+    Prueba la búsqueda de artistas (core/views/search.py).
+    """
+
+    def test_search_finds_matching_artist(self):
+        response = self.client.get(reverse("search"), {"q": "Prueba"})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.artist.stage_name)
+
+    def test_search_is_case_insensitive_and_partial(self):
+        response = self.client.get(reverse("search"), {"q": "artista"})
+        self.assertContains(response, self.artist.stage_name)
+
+    def test_search_without_query_shows_no_results(self):
+        response = self.client.get(reverse("search"))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, self.artist.stage_name)
+
+    def test_search_with_no_matches(self):
+        response = self.client.get(reverse("search"), {"q": "xxxxxxxxx"})
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, self.artist.stage_name)
+
+
+class SlugCollisionTests(TestCase):
+    """
+    Evita que vuelva a pasar desapercibido el bug donde dos registros
+    con el mismo nombre generaban el mismo slug y crasheaban con
+    IntegrityError al guardar (core/models/slug.py).
+    """
+
+    def test_duplicate_artist_names_get_unique_slugs(self):
+        country = Country.objects.create(name="Colombia", code="CO")
+
+        artist_1 = Artist.objects.create(
+            stage_name="Nombre Repetido",
+            full_name="Persona Uno",
+            country=country,
+        )
+        artist_2 = Artist.objects.create(
+            stage_name="Nombre Repetido",
+            full_name="Persona Dos",
+            country=country,
+        )
+        artist_3 = Artist.objects.create(
+            stage_name="Nombre Repetido",
+            full_name="Persona Tres",
+            country=country,
+        )
+
+        slugs = {artist_1.slug, artist_2.slug, artist_3.slug}
+        self.assertEqual(
+            len(slugs), 3,
+            "Los 3 artistas deberían tener slugs distintos entre sí",
+        )
+        self.assertEqual(artist_1.slug, "nombre-repetido")
+
+    def test_duplicate_album_titles_get_unique_slugs(self):
+        country = Country.objects.create(name="Colombia", code="CO")
+        artist = Artist.objects.create(
+            stage_name="Artista X",
+            full_name="Nombre X",
+            country=country,
+        )
+
+        album_1 = Album.objects.create(
+            artist=artist,
+            title="Grandes Éxitos",
+            release_date=date(2020, 1, 1),
+        )
+        album_2 = Album.objects.create(
+            artist=artist,
+            title="Grandes Éxitos",
+            release_date=date(2022, 1, 1),
+        )
+
+        self.assertNotEqual(album_1.slug, album_2.slug)
+
+
+class SEOTests(BaseTestData):
+    """
+    Prueba que sitemap.xml y robots.txt respondan correctamente.
+    """
+
+    def test_sitemap_loads(self):
+        response = self.client.get(reverse("sitemap"))
+        self.assertEqual(response.status_code, 200)
+        content = response.content.decode()
+        self.assertIn(self.artist.get_absolute_url(), content)
+        self.assertIn(self.album.get_absolute_url(), content)
+
+    def test_robots_txt_loads_and_references_sitemap(self):
+        response = self.client.get("/robots.txt")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Sitemap:")
+        self.assertContains(response, "Disallow: /admin/")

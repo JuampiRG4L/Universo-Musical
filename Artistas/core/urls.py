@@ -6,6 +6,7 @@ from .views.album import album_detail
 from .views.gallery import gallery
 from .views.news import news_list
 from .views.award import awards
+from .views.search import search
 
 
 urlpatterns = [
@@ -49,6 +50,13 @@ urlpatterns = [
         "artista/<slug:slug>/premios/",
         awards,
         name="artist_awards"
+    ),
+
+
+    path(
+        "buscar/",
+        search,
+        name="search"
     ),
 
 ]
