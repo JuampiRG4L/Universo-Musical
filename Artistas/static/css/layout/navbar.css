@@ -5,5 +5,45 @@
 }
 
 .header {
-    background-color: red;
+    display: flex;
+    height: 100px;
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    cursor: pointer;
+    width: 20%;
+}
+
+.img-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.text-logo {
+    margin-left: 10px;
+}
+
+.ul-home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.li-home {
+    list-style: none;
+}
+
+.a-home {
+    text-decoration: none;
+    color: black;
 }

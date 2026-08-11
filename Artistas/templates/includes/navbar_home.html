@@ -11,7 +11,7 @@
 
             {% if site_settings.logo %}
 
-                <img
+                <img class="img-logo"
 
                 src="{{ site_settings.logo.url }}"
 
@@ -23,23 +23,22 @@
 
 
 
-            <span>
-
+            <p class="text-logo">
                 {{ site_settings.site_name }}
-
-            </span>
+            </p>
+            
 
 
         </div>
 
 
 
-        <ul>
+        <ul class="ul-home">
 
 
-            <li>
+            <li class="li-home">
 
-                <a href="{% url 'home' %}">
+                <a href="{% url 'home' %}" class="a-home">
 
                     {% translate "Inicio" %}
 
@@ -49,9 +48,9 @@
 
 
 
-            <li>
+            <li class="li-home">
 
-                <a href="{% url 'home' %}#artists">
+                <a href="{% url 'home' %}#artists" class="a-home">
 
                     {% translate "Artistas" %}
 
@@ -61,7 +60,7 @@
 
 
 
-            <li>
+            <li class="li-home">
 
                 {% include "includes/language_selector.html" %}
 

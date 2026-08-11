@@ -307,7 +307,26 @@ class SEOTests(BaseTestData):
         self.assertContains(response, "Disallow: /admin/")
 
 
-class FrontendStructureTests(BaseTestData):
+class TranslationTests(BaseTestData):
+    """
+    Evita que vuelva a pasar desapercibido que las traducciones no
+    existían de verdad (sin archivos .po/.mo compilados, Django solo
+    cambiaba el prefijo de la URL pero el texto seguía en español
+    sin importar el idioma elegido).
+    """
+
+    def test_english_actually_translates_text(self):
+        response = self.client.get("/en/buscar/")
+        self.assertContains(response, "Search artists")
+        self.assertNotContains(response, "Buscar artistas")
+
+    def test_portuguese_actually_translates_text(self):
+        response = self.client.get("/pt/")
+        self.assertContains(response, "Início")
+
+    def test_spanish_is_the_default(self):
+        response = self.client.get("/es/buscar/")
+        self.assertContains(response, "Buscar artistas")
     """
     Prueba los cambios de estructura de front-end: "Ver más" como
     <button> (no <a>) en las cards, y el selector de idioma con

@@ -1,23 +1,20 @@
 {% load i18n %}
 {% load language_extras %}
 
-<form action="{% url 'set_language' %}" method="post">
+<form action="{% url 'set_language' %}" method="post" class="form-selector">
 
 {% csrf_token %}
 
 <input type="hidden" name="next" value="{{ request.path }}">
 
-<select name="language">
+<select name="language" class="select-selector">
 
 {% get_current_language as CURRENT_LANGUAGE %}
 {% get_available_languages as AVAILABLE_LANGUAGES %}
 
 {% for code, name in AVAILABLE_LANGUAGES %}
 
-    <option
-        value="{{ code }}"
-        {% if code == CURRENT_LANGUAGE %}selected{% endif %}
-    >
+    <option value="{{ code }}" {% if code == CURRENT_LANGUAGE %}selected{% endif %} >
         {% language_flag code %} {% language_code_label code %}
     </option>
 

@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 03:42-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: templates/404.html:8
+msgid "Página no encontrada"
+msgstr "Page not found"
+
+#: templates/404.html:20
+msgid "La página que buscas no existe o fue movida."
+msgstr "The page you're looking for doesn't exist or was moved."
+
+#: templates/404.html:24 templates/500.html:20
+msgid "Volver al inicio"
+msgstr "Back to home"
+
+#: templates/500.html:7
+msgid "Error del servidor"
+msgstr "Server error"
+
+#: templates/500.html:16
+msgid ""
+"Ocurrió un error inesperado. Ya estamos al tanto e intentaremos solucionarlo."
+msgstr ""
+
+#: templates/core/albums.html:11 templates/core/albums.html:29
+#: templates/includes/navbar_artist.html:35
+msgid "Álbumes"
+msgstr "Albums"
+
+#: templates/core/awards.html:35 templates/includes/navbar_artist.html:65
+msgid "Premios"
+msgstr "Awards"
+
+#: templates/core/gallery.html:32 templates/includes/navbar_artist.html:45
+msgid "Galería"
+msgstr "Gallery"
+
+#: templates/core/home.html:59 templates/includes/navbar_artist.html:27
+#: templates/includes/navbar_home.html:56
+msgid "Artistas"
+msgstr "Artists"
+
+#: templates/core/news.html:33 templates/includes/navbar_artist.html:55
+msgid "Noticias"
+msgstr "News"
+
+#: templates/core/search.html:11
+msgid "Resultados de búsqueda"
+msgstr "Search results"
+
+#: templates/core/search.html:33
+#, python-format
+msgid "Resultados para \"%(query)s\""
+msgstr "Results for \"%(query)s\""
+
+#: templates/core/search.html:39
+msgid "Buscar artistas"
+msgstr "Search artists"
+
+#: templates/core/search.html:60
+msgid "No se encontraron artistas con ese nombre."
+msgstr "No artists found with that name."
+
+#: templates/includes/album/album_hero.html:28
+#: templates/includes/cards/album_card.html:20
+msgid "Fecha de lanzamiento"
+msgstr "Release date"
+
+#: templates/includes/album/albums_list.html:18
+msgid "Este artista aún no tiene álbumes registrados."
+msgstr "This artist doesn't have any albums yet."
+
+#: templates/includes/album/songs.html:7
+msgid "Canciones"
+msgstr "Songs"
+
+#: templates/includes/album/songs.html:21
+msgid "Este álbum aún no tiene canciones."
+msgstr "This album doesn't have any songs yet."
+
+#: templates/includes/artist/artist_info.html:33
+msgid "Fecha de nacimiento"
+msgstr "Date of birth"
+
+#: templates/includes/artist/social_links.html:9
+msgid "Redes sociales"
+msgstr "Social media"
+
+#: templates/includes/awards/awards_list.html:23
+msgid "No hay premios registrados."
+msgstr "No awards registered."
+
+#: templates/includes/cards/album_card.html:31
+#: templates/includes/cards/artist_card.html:47
+msgid "Ver más"
+msgstr "See more"
+
+#: templates/includes/cards/award_card.html:41
+msgid "Fecha del premio"
+msgstr "Award date"
+
+#: templates/includes/cards/news_card.html:41
+msgid "Publicado el"
+msgstr "Published on"
+
+#: templates/includes/cards/song_card.html:27
+msgid "Escuchar"
+msgstr "Listen"
+
+#: templates/includes/gallery/gallery_grid.html:19
+msgid "No hay imágenes disponibles."
+msgstr "No images available."
+
+#: templates/includes/home/search_bar.html:6
+msgid "Buscar artista"
+msgstr "Search artist"
+
+#: templates/includes/home/search_bar.html:14
+msgid "Buscar artista..."
+msgstr "Search artist..."
+
+#: templates/includes/home/search_bar.html:18
+msgid "Buscar"
+msgstr "Search"
+
+#: templates/includes/navbar_artist.html:21
+#: templates/includes/navbar_home.html:44
+msgid "Inicio"
+msgstr "Home"
+
+#: templates/includes/news/news_list.html:21
+msgid "No hay noticias disponibles."
+msgstr "No news available."

@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 03:42-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: templates/404.html:8
+msgid "Página no encontrada"
+msgstr "Página não encontrada"
+
+#: templates/404.html:20
+msgid "La página que buscas no existe o fue movida."
+msgstr "A página que você procura não existe ou foi movida."
+
+#: templates/404.html:24 templates/500.html:20
+msgid "Volver al inicio"
+msgstr "Voltar ao início"
+
+#: templates/500.html:7
+msgid "Error del servidor"
+msgstr "Erro do servidor"
+
+#: templates/500.html:16
+msgid ""
+"Ocurrió un error inesperado. Ya estamos al tanto e intentaremos solucionarlo."
+msgstr ""
+
+#: templates/core/albums.html:11 templates/core/albums.html:29
+#: templates/includes/navbar_artist.html:35
+msgid "Álbumes"
+msgstr "Álbuns"
+
+#: templates/core/awards.html:35 templates/includes/navbar_artist.html:65
+msgid "Premios"
+msgstr "Prêmios"
+
+#: templates/core/gallery.html:32 templates/includes/navbar_artist.html:45
+msgid "Galería"
+msgstr "Galeria"
+
+#: templates/core/home.html:59 templates/includes/navbar_artist.html:27
+#: templates/includes/navbar_home.html:56
+msgid "Artistas"
+msgstr "Artistas"
+
+#: templates/core/news.html:33 templates/includes/navbar_artist.html:55
+msgid "Noticias"
+msgstr "Notícias"
+
+#: templates/core/search.html:11
+msgid "Resultados de búsqueda"
+msgstr "Resultados da busca"
+
+#: templates/core/search.html:33
+#, python-format
+msgid "Resultados para \"%(query)s\""
+msgstr "Resultados para \"%(query)s\""
+
+#: templates/core/search.html:39
+msgid "Buscar artistas"
+msgstr "Buscar artistas"
+
+#: templates/core/search.html:60
+msgid "No se encontraron artistas con ese nombre."
+msgstr "Nenhum artista encontrado com esse nome."
+
+#: templates/includes/album/album_hero.html:28
+#: templates/includes/cards/album_card.html:20
+msgid "Fecha de lanzamiento"
+msgstr "Data de lançamento"
+
+#: templates/includes/album/albums_list.html:18
+msgid "Este artista aún no tiene álbumes registrados."
+msgstr "Este artista ainda não tem álbuns registrados."
+
+#: templates/includes/album/songs.html:7
+msgid "Canciones"
+msgstr "Músicas"
+
+#: templates/includes/album/songs.html:21
+msgid "Este álbum aún no tiene canciones."
+msgstr "Este álbum ainda não tem músicas."
+
+#: templates/includes/artist/artist_info.html:33
+msgid "Fecha de nacimiento"
+msgstr "Data de nascimento"
+
+#: templates/includes/artist/social_links.html:9
+msgid "Redes sociales"
+msgstr "Redes sociais"
+
+#: templates/includes/awards/awards_list.html:23
+msgid "No hay premios registrados."
+msgstr "Nenhum prêmio registrado."
+
+#: templates/includes/cards/album_card.html:31
+#: templates/includes/cards/artist_card.html:47
+msgid "Ver más"
+msgstr "Ver mais"
+
+#: templates/includes/cards/award_card.html:41
+msgid "Fecha del premio"
+msgstr "Data do prêmio"
+
+#: templates/includes/cards/news_card.html:41
+msgid "Publicado el"
+msgstr "Publicado em"
+
+#: templates/includes/cards/song_card.html:27
+msgid "Escuchar"
+msgstr "Ouvir"
+
+#: templates/includes/gallery/gallery_grid.html:19
+msgid "No hay imágenes disponibles."
+msgstr "Nenhuma imagem disponível."
+
+#: templates/includes/home/search_bar.html:6
+msgid "Buscar artista"
+msgstr "Buscar artista"
+
+#: templates/includes/home/search_bar.html:14
+msgid "Buscar artista..."
+msgstr "Buscar artista..."
+
+#: templates/includes/home/search_bar.html:18
+msgid "Buscar"
+msgstr "Buscar"
+
+#: templates/includes/navbar_artist.html:21
+#: templates/includes/navbar_home.html:44
+msgid "Inicio"
+msgstr "Início"
+
+#: templates/includes/news/news_list.html:21
+msgid "No hay noticias disponibles."
+msgstr "Nenhuma notícia disponível."
